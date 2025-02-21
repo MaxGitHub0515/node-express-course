@@ -23,7 +23,7 @@ function App() {
       setPassword('');
       setEmail('');
     } catch (error) {
-      console.log(error);
+      console.log({err:  error, msg: "||Issue found in handleSubmit||"})
     }
   };
 
