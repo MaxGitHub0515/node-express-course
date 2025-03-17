@@ -9,43 +9,37 @@
 - [*Firebase*]() 
 - [*TailwindCSS*]()
 
-### Featers To Be Implemented:
-- **Auth**:
-    - **User** 
-    - **Admin Dashboard**
->Auth has options of signing in or up with
->google & github apart from doing it manually.
-> For that I used `Firebase` <br>
-> Admin can: <br>
-    > - Add new books 
-    > - Delete created books 
-    > - Edit, changing information e.g description, title etc
-    > - See all the books that are available
-    > - See the charts like revenue etc.
 
-> User can: <br>
-    > - See the product and details of it
-    > - Add a product to the cart, Delete a product from the cart
-    > - Go to the checkout or continue shopping
-    > - Fill in the form with personal information 
-    > - Pay for the product and delievery - Total Price
+### Features To Be Implemented:
+- **Auth**`:
+    - **User**  
+    - **Admin Dashboard**  
 
-    
+#### Auth Details:
+Auth has options of signing in or signing up with **Google & GitHub**, apart from doing it manually.  
+For that, I used `Firebase`.  
 
+**Admin can:**  
+- Add new books  
+- Delete created books  
+- Edit book details (e.g., description, title, etc.)  
+- See all available books  
+- View charts like revenue, etc.  
 
-    
+**User can:**  
+- View products and their details  
+- Add a product to the cart / Remove a product from the cart  
+- Proceed to checkout or continue shopping  
+- Fill in the form with personal information  
+- Pay for the product and delivery (Total Price)  
 
+---
 
+- **`Cookies`**:  
+  Cookies allow users to easily close/open a new tab while keeping credentials valid if referring to the same URL recently used.  
 
-
-- **Cookies**:
-> Cookies, so user can easily close/open a new tab
-and credentials are still valid if refering to the same url recently used.
-
-
-- **Payment Method** :
-> Using Stripe & PayPal
-
+- **`Payment Method`**:  
+  Using **Stripe** & **PayPal**  
 
     
 
