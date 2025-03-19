@@ -7,11 +7,11 @@
 - [*Express/Node*]()  
 - [*MongoDB/Mongoose*]()  
 - [*Firebase*]() 
-- [*TailwindCSS*]()
+- [*TailwindCSS* (with Vite)](https://tailwindcss.com/docs/installation/using-vite)
 
 
-### Features To Be Implemented:
-- **Auth**`:
+###  To Be Implemented:
+- **`Auth`**:
     - **User**  
     - **Admin Dashboard**  
 
@@ -44,3 +44,4 @@ For that, I used `Firebase`.
     
 
 
+Features
