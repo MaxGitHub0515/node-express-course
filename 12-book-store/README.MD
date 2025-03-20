@@ -3,7 +3,7 @@
 
 ## STACK:
 
-- [*React/Redux (RTK Query Toolkit)*]() 
+- [*React/Redux (RTK Query Toolkit)*](#setting-up-reactredux) 
 - [*Express/Node*]()  
 - [*MongoDB/Mongoose*]()  
 - [*Firebase*]() 
@@ -41,7 +41,23 @@ For that, I used `Firebase`.
 - **`Payment Method`**:  
   Using **Stripe** & **PayPal**  
 
-    
+
+## Setting up Tailwind CSS
+``` shell
+  
+```
+## Setting up React/Redux
+``` shell
+  
+```
 
 
-Features
+
+## Setting up MongoDB/Mongoose
+``` shell
+
+```
+## Setting up Express/Node
+``` shell
+
+```
