@@ -12,7 +12,7 @@
     "call-bind": "^1.0.7",
     "chalk": "^5.3.0",
     "content-disposition": "^0.5.4",
-    "content-type": "^1.0.5",
+    "content-type": "^1.0.5",     
     "cookie": "^0.6.0",
     "cookie-signature": "^1.0.6",
     "debug": "^2.6.9",
