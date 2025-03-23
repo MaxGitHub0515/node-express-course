@@ -148,3 +148,93 @@ mongodb+srv://username:password@cluster0.abcd123.mongodb.net/myDatabase?retryWri
 ``` shell
 npm install firebase
 ```
+**Then, add a config file at `firebase/firebase.config.js` and paste the code generated when you created your project on firebase.com. It should look sth like this :**
+```shell
+# // Import the functions you need from the SDKs you need
+import { initializeApp } from "firebase/app";
+import { getAuth } from "firebase/auth";
+
+# // TODO: Add SDKs for Firebase products that you want to use
+# // https://firebase.google.com/docs/web/setup#available-libraries
+
+# // Your web app's Firebase configuration e.g:
+# /* Keep the values like apiKey etc below in .env file starting  with VITE_
+# // You can find more info on variants of .env here: (https://vite.dev/guide/env-and-mode#env-files)
+# // .env.local is ignored by git (by default) 
+
+const firebaseConfig = {
+  apiKey: "AIzaSyCXvDIC4MPrkaMdeg_O2iij88wLpfj3qBA",
+  authDomain: "book-store-mern-app.firebaseapp.com",
+  projectId: "book-store-mern-app",
+  storageBucket: "book-store-mern-app.appspot.com",
+  messagingSenderId: "205632822247",
+  appId: "1:205632822247:web:b0b0ec66bf6de0bbb3b42"
+};
+
+# // Initialize Firebase
+const app = initializeApp(firebaseConfig);
+export const auth = getAuth(app);
+```
+**With .env, in `firebase.config.js` we should get :**
+```shell
+# // Your web app's Firebase configuration
+const firebaseConfig = {
+  apiKey: import.meta.env.VITE_API_KEY,
+  authDomain: import.meta.env.VITE_AUTH_DOMAIN,
+  projectId: import.meta.env.VITE_PROJECT_ID,
+  storageBucket: import.meta.env.VITE_STORAGE_BUCKET,
+  messagingSenderId: import.meta.env.VITE_MESSAGING_SENDER_ID,
+  appId: import.meta.env.VITE_APP_ID
+};
+```
+**Notion .env :**
+* To prevent accidentally leaking env variables to the client, only variables prefixed with VITE_ are exposed to your Vite-processed code. e.g. for the following env variables:
+```shell 
+VITE_SOME_KEY=123
+DB_PASSWORD=foobar
+```
+* Only VITE_SOME_KEY will be exposed as import.meta.env.VITE_SOME_KEY to your client source code, but DB_PASSWORD will not.
+```shell
+console.log(import.meta.env.VITE_SOME_KEY) // "123"
+console.log(import.meta.env.DB_PASSWORD) // undefined
+
+```
+## Setting up [Express/Node]()
+``` shell
+npm i express
+```
+**Server Starter**
+```shell
+const express = require('express');
+const app = express()
+
+require('dotenv').config();
+const connectDB = require('./db/connect');
+
+//optional
+require('colors');
+
+
+const PORT = process.env.PORT;
+const MONGO_URI = process.env.MONGO_URI || 8000;
+
+const start = async () => {
+    try {
+      app.listen(PORT, () =>
+        console.log(`Server is listening on port ${PORT}...`.green)
+      );
+      await connectDB(process.env.MONGO_URI);
+      if(connectDB ){
+       console.log('Successfully Connected To The DB!'.green);
+
+      }
+    } catch (error) {
+        if(error){
+            console.log(error); console.log("|||--CAUGHT A CONNECT_DB ERROR OR A SERVER ERROR--|||".red)
+        }
+     
+    }
+};
+
+module.exports = start;
+```
