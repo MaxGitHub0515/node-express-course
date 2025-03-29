@@ -215,8 +215,8 @@ const connectDB = require('./db/connect');
 require('colors');
 
 
-const PORT = process.env.PORT;
-const MONGO_URI = process.env.MONGO_URI || 8000;
+const PORT = process.env.PORT || 8000;
+const MONGO_URI = process.env.MONGO_URI;
 
 const start = async () => {
     try {
