@@ -4,13 +4,22 @@ import { IoSearchOutline } from "react-icons/io5";
 import { HiOutlineShoppingCart, HiOutlineUser } from "react-icons/hi";
 import { HiOutlineHeart } from "react-icons/hi";
 import avatarImage from "../assets/avatar.png"
-
-
+import { useState } from "react";
 
 
 
 const Navbar = () => {
   const currentUser = true;
+  // React State ->> const [holder, updater] = definedstate(); 
+  // holder - holds the state value, updater - updates the state 
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const navigationData = [
+    {name: "Dashboard", href: "/dashboard"},
+    {name: "Cart Page", href: "/cart"},
+    {name: "Orders", href: "/orders"},
+    {name: "Check Out", href: "/checkout"},
+  ];
+
   return (
     
     <header className="max-w-screen-2xl mx-auto px-4 py-6">
@@ -30,13 +39,45 @@ const Navbar = () => {
               <div>
                 {
                      currentUser ? <>
-                     <button className="flex items-center">
+                     <button className="flex items-center" onClick={() => setIsDropdownOpen(!isDropdownOpen)}>
                       {/* using dynamic classes after alt */}
                       <img src={avatarImage} alt="" className={`size-7 rounded-full 
                          ${currentUser ? 'ring-2 ring-blue-400' : ''}`}/>
                      </button>
-                  
                      
+                      { 
+                      
+                        /* Remember: 
+                        For && 
+                        If the left side is truthy, the expression continues to the right side, and the value on the right is returned.
+                        If the left side is falsy, the right side is ignored, and the left side is immediately returned without evaluating the right side.
+                        For ||
+                        it searches for the first truthy value and returns it 
+                        */
+                        // If isDropdownOpen is true, React will render the <div>.
+                        isDropdownOpen && (
+                          <div className="absolute right-0 w-48 mt-2 z-40  bg-white shadow-lg rounded-md">
+                            <ul className="py-2">
+                              {
+                                navigationData.map((item) => (
+                                  // with the key, React updates only the changed items instead of re-rendering the whole lis
+                                  // close the menu if clicked on a link
+                                    <li key={item.name} onClick={() => setIsDropdownOpen(false)}> 
+                                    <Link to={item.href} className="block px-4 py-2 text-sm hover:bg-gray-100">
+                                      {item.name}
+                                    </Link>
+                                    
+                                  </li>
+                                )
+                              )
+                              }
+                              
+                            </ul>
+                          </div>
+                        )     
+                     
+                      }
+            
                      </> : <Link to="/login">
                         <HiOutlineUser className="size-6" />
                      </Link>
