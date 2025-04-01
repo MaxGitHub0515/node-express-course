@@ -238,3 +238,9 @@ const start = async () => {
 
 module.exports = start;
 ```
+
+
+Next app to be built after 
+finishing book store -
+Chat App, using web sockets (socket.io)
+
