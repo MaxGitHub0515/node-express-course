@@ -239,6 +239,8 @@ const start = async () => {
 module.exports = start;
 ```
 
+Gotta carry on with 
+writing the project, 100%
 
 Next app to be built after 
 finishing book store -
