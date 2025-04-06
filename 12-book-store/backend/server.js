@@ -7,6 +7,7 @@ const figlet = require('figlet')
 require('dotenv').config({ path: '.env.local' });
 
 const connectDB = require('./db/connect');
+const { red } = require('colors');
 
 //optional
 require('colors');
@@ -17,11 +18,8 @@ const MONGO_URI = process.env?.MONGO_URI;
 
 const start = async () => {
     try {
-      app.listen(PORT, () => {
+      app.listen(PORT, () => 
         console.log(`Server is listening on port ${PORT}...`.green)
-        
-      }
-      
       );
       await connectDB(process.env.MONGO_URI);
       if(connectDB ){
@@ -36,7 +34,6 @@ const start = async () => {
         }
      
     }
-};
-
+  };
 
 module.exports = start;
