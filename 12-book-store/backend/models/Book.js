@@ -44,6 +44,8 @@ const BookSchema = new mongoose.Schema({
 
 const Book = mongoose.model("Book", BookSchema, "books" )
 
+export default Book;
+
 /* BOOK MODEL
 
     title

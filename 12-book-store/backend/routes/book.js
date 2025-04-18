@@ -6,9 +6,9 @@ const router = express.Router();
 const {
    getSingleBook,
    getAllBooks,
-   deleteSingleBook,
-   updateBook,
-   createBook
+   deleteABook,
+   updateABook,
+   postABook
 
 } = require('../controllers/articles');
 
@@ -20,7 +20,7 @@ router.get("/", getAllBooks);
 
 router.get("/:id", getSingleBook);
 
-router.put("/edit/:id", verifyAdminToken, UpdateBook);
+router.put("/edit/:id", verifyAdminToken, updateABook);
 
 router.delete("/:id", verifyAdminToken, deleteABook)
 
