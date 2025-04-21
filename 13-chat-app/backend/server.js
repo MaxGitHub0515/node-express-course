@@ -38,8 +38,9 @@ const Start = (async () => {
         }
         
     } catch(e) {
-        console.log(e);
+        console.log(e.message);
         console.log("|||--CAUGHT A CONNECT_DB ERROR OR A SERVER ERROR--|||".red)
+        
         
     }
 })();
