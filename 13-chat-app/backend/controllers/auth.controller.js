@@ -1,9 +1,10 @@
 import User from "../models/user.model.js";
 import {StatusCodes} from "http-status-codes";
 import bcrypt from "bcryptjs";
+import generateTokenAndSetCookie from "../utils/generateToken.js";
 export const signup = async(req, res) => {
    try {
-    
+  
     const {fullname, username, pwd, confirmPwd, gender} = req.body;
     // if the passwords are matching
     if(pwd !== confirmPwd) {
@@ -34,14 +35,13 @@ export const signup = async(req, res) => {
     })
 
    if(newUser) {
-
+    generateTokenAndSetCookie(newUser._id, res);
     await newUser.save();
     //  get from database already stored data: check
     res.status(StatusCodes.CREATED).json({
         _id: newUser._id,
         fullname: newUser.fullname,
         username: newUser.username, 
-        gender: newUser.gender,
         profilePic: newUser.profilePic
     })
    } else {
@@ -55,8 +55,45 @@ export const signup = async(req, res) => {
    }
 }
 export const login = async(req, res) => {
-    res.send("Login Page")
+    try{            
+    const {username, pwd} = req.body;
+     // in order to compare passwords you first need to find a user in db 
+    const user = await User.findOne({username});
+    //if undefined or null compare with empty string = wont throw an error
+    // if any of them is false
+    const isPasswordCorrect = await bcrypt.compare(pwd, user?.pwd || "") // 
+    if(!user || !isPasswordCorrect) {
+        return res.status(StatusCodes.BAD_REQUEST).json({err: "Invalid user credentials"})
+    }
+    //??
+    generateTokenAndSetCookie(user._id, res)
+    res.status(StatusCodes.CREATED).json({
+        _id: user._id,
+        fullname: user.fullname,
+        username: user.username, 
+        profilePic: user.profilePic
+    })
+
+    }catch (error) {
+        console.log("Error in login controller", error.message, error.stack);
+        res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({e: "Internal Server Error"})
+   
+        
+       }
 }
 export const logout  = async(req, res) => {
-    res.send("Login Page")
+
+    try{
+        res.cookie("jwt", "", {maxAge:0});
+        res.status(StatusCodes.OK).json({
+            msg: "Logged out Successfully"
+        })
+
+    }catch (error) {
+        console.log("Error in logout controller", error.message, error.stack);
+        res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({e: "Internal Server Error"})
+   
+        
+       }
+    
 }
