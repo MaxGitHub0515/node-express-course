@@ -22,8 +22,10 @@ const PORT = process.env.PORT || 8000;
 
 // imported routes
 import authRoutes from "./routes/auth.routes.js"
+import messageRoutes from "./routes/message.routes.js"
 
-app.use('/api/v1/auth', authRoutes)
+app.use('/api/v1/auth', authRoutes);
+app.use('/api/v1/messages', messageRoutes)
 
 
 const Start = (async () => {
