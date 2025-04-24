@@ -14,7 +14,7 @@ const MessageSchema = new mongoose.Schema({
     },
     message: {
         type: String,
-        required: truek
+        required: true,
 
     },
 

@@ -1,4 +1,5 @@
-import Message from "../models/message.model."
+import Message from "../models/message.model.js";
+
 import {StatusCodes} from "http-status-codes";
 
 
