@@ -9,7 +9,7 @@ export const sendMessage = async(req, res) => {
       const {message} = req.body;
       // same as const id = req.params.id
       const {id} = req.params;
-
+      
 
     } catch (error) {
         console.log(error.message)
