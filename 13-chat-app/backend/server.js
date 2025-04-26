@@ -1,9 +1,8 @@
 
 // Imports
 
+import {app, server} from "./socket/socket.js"
 import express from "express"
-const app = express();
-
 import cookieParser from "cookie-parser"
 import { connectDB } from "./db/connect.js";
 import dotenv from "dotenv"
@@ -26,13 +25,14 @@ const PORT = process.env.PORT || 8000;
 import authRoutes from "./routes/auth.routes.js"
 import messageRoutes from "./routes/message.routes.js"
 
+
 app.use('/api/v1/auth', authRoutes);
 app.use('/api/v1/messages', messageRoutes)
 
 
 const Start = (async () => {
     try{
-        app.listen(PORT, () => {
+        server.listen(PORT, () => {
             console.log(`Server is listening on PORT=${PORT}`.green)
         }) 
         
