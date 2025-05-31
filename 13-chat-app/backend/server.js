@@ -1,14 +1,14 @@
 
 // Imports
 
-import {app, server} from "./socket/socket.js"
-import express from "express"
+import {server, app} from "./socket/socket.js"; 
+import express from "express";
 import cookieParser from "cookie-parser"
 import { connectDB } from "./db/connect.js";
 import dotenv from "dotenv"
 dotenv.config({ path: '.env.local' });
 import configCors from "./config/cors.config.js"
-// optional
+// optional - cli, running, server spinning, etc
 import colors from "colors"
 
 
