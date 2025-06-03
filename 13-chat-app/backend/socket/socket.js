@@ -9,7 +9,7 @@ const io = new Server(server);
 const userSocketMap = {}; 
 
 // socket has various properties like id etc
-io.on('connection', (socket) => {
+io.on('connect', (socket) => {
     console.log("A User Is Connected", socket.id)
 
     // socket.on() is used to listen to the events, it is used both for front and server-side
@@ -19,9 +19,11 @@ io.on('connection', (socket) => {
     })
 
     
+
 });
 
 
-export {app, io, server}
+
+export {app, server, io};
 
 
