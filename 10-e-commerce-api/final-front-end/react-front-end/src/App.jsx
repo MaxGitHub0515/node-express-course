@@ -7,7 +7,7 @@ function App() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (!email || !password) return;
+    if (!email || !password) return alert('please fill out all fields');
     const user = { email, password };
 
     try {
@@ -23,7 +23,7 @@ function App() {
       setPassword('');
       setEmail('');
     } catch (error) {
-      console.log({err:  error, msg: "||Issue found in handleSubmit||"})
+      console.log(error);
     }
   };
 
@@ -72,10 +72,10 @@ function App() {
       </form>
       <div className='container'>
         <button className='btn testing-btn' onClick={fetchTesting}>
-          Testing
+          testing
         </button>
         <button className='btn logout-btn' onClick={fetchLogout}>
-          Logout
+          logout
         </button>
       </div>
     </>
